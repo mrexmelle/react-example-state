@@ -1,5 +1,5 @@
 # react-example-state
-This repository demonstrates how to use Redux to control the state of text input component based on another component's state.
+This repository demonstrates how to use React component's state to control the state of component.
 
 ## Running
 ```

@@ -17,7 +17,7 @@ class App extends Component {
 
   onOtherChanged = (event) =>
   {
-    this.setState( {other_value: event.target.value});
+    this.setState( {other_value: event.target.value} );
   }
 
   render() {

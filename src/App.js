@@ -11,20 +11,16 @@ class App extends Component {
 
   onColorSelected = (event) =>
   {
-    console.log("App::onColorSelected - name: " + event.target.name);
-    console.log("App::onColorSelected - value: " + event.target.value);
+    console.log("App::onColorSelected - (name, value): (" + event.target.name + ", " + event.target.value + ")");
     this.setState( {other_selected: event.target.value==="other", other_value: ""} );
   }
 
   onOtherChanged = (event) =>
   {
-    console.log("App::onOtherChanged - called");
     this.setState( {other_value: event.target.value});
   }
 
   render() {
-
-    console.log("App::render - other_value: " + this.state.other_value);
 
     return (
       <div className="App">

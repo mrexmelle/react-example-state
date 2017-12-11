@@ -1,17 +1,56 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  constructor(props)
+  {
+    super(props);
+    this.state={ other_selected: false, other_value: "" };
+  }
+
+  onColorSelected = (event) =>
+  {
+    console.log("App::onColorSelected - name: " + event.target.name);
+    console.log("App::onColorSelected - value: " + event.target.value);
+    this.setState( {other_selected: event.target.value==="other", other_value: ""} );
+  }
+
+  onOtherChanged = (event) =>
+  {
+    console.log("App::onOtherChanged - called");
+    this.setState( {other_value: event.target.value});
+  }
+
   render() {
+
+    console.log("App::render - other_value: " + this.state.other_value);
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+        <div>
+          <p>What is your favorite color?</p>
+        </div>
+        <p style={{"color":"red"}}>
+          <input type="radio" name="favorite_color" value="red" onClick={this.onColorSelected}/>
+          <span>Red</span>
+        </p>
+        <p style={{"color":"green"}}>
+          <input type="radio" name="favorite_color" value="green" onClick={this.onColorSelected}/>
+          <span>Green</span>
+        </p>
+        <p style={{"color":"blue"}}>
+          <input type="radio" name="favorite_color" value="blue" onClick={this.onColorSelected}/>
+          <span>Blue</span>
+        </p>
+        <p>
+          <input type="radio" name="favorite_color" value="other" onClick={this.onColorSelected}/>
+          <span>
+            <input type="text" name="other_color" placeholder="Other"
+              value={this.state.other_value}
+              onChange={this.onOtherChanged}
+              disabled={this.state.other_selected ? "" : "disabled"} />
+          </span>
         </p>
       </div>
     );
